@@ -14,7 +14,15 @@ let storyIdCounter = 1;
  * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
  */
 function addCollaborator() {
-    // À IMPLÉMENTER
+    const collaboratorName = document.getElementById('collaboratorName').value;
+    if (collaboratorName && !collaborators.includes(collaboratorName) && collaboratorName.trim() !== '') {
+        collaborators.push(collaboratorName);
+        document.getElementById('collaboratorName').value = '';
+        updateCollaboratorsList();
+        updateAssigneeSelect();
+    } else {
+        alert('Le nom du collaborateur est vide ou existe déjà.');
+    }
 }
 
 /**
