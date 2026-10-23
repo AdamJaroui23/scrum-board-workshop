@@ -15,7 +15,7 @@ let storyIdCounter = 1;
  */
 function addCollaborator() {
     const collaboratorName = document.getElementById('collaboratorName').value;
-    if (collaboratorName && !collaborators.includes(collaboratorName) && collaboratorName.trim() !== '') {
+    if (collaboratorName && !collaborators.includes(collaboratorName) && collaboratorName.trim()) {
         collaborators.push(collaboratorName);
         document.getElementById('collaboratorName').value = '';
         updateCollaboratorsList();
@@ -70,7 +70,27 @@ function updateAssigneeSelect() {
  * - Appeler renderSprintBacklog() pour actualiser l'affichage
  */
 function addUserStory() {
-    // À IMPLÉMENTER
+    const title = document.getElementById('storyTitle').value.trim();
+    const description = document.getElementById('storyDescription').value.trim();
+    const sprint = parseInt(document.getElementById('storySprint').value);
+    const assignee = document.getElementById('storyAssignee').value;
+    if (title && description && title.trim() && description.trim() && !isNaN(sprint)) {
+        const story = {
+            id: storyIdCounter++,
+            title,
+            description,
+            sprint,
+            assignee,
+            status: 'backlog'
+        };
+        userStories.push(story);
+        document.getElementById('storyTitle').value = '';
+        document.getElementById('storyDescription').value = '';
+        renderSprintBacklog();
+    } else {
+        alert('Veuillez remplir tous les champs requis.');
+    }
+
 }
 
 /**
