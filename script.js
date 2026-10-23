@@ -34,7 +34,13 @@ function addCollaborator() {
  * - Injecter le HTML dans l'élément avec innerHTML
  */
 function updateCollaboratorsList() {
-    // À IMPLÉMENTER
+    const collaboratorsList = document.getElementById('collaboratorsList');
+    let html = '';
+    collaborators.forEach(collaborator => {
+        html +=
+            `<span style="background: #667eea; color: white; padding: 8px 15px; border-radius: 20px; margin-right: 10px;">${collaborator}</span>`;
+    });
+    collaboratorsList.innerHTML = html;
 }
 
 /**
@@ -45,7 +51,12 @@ function updateCollaboratorsList() {
  * - Mettre à jour le select avec innerHTML
  */
 function updateAssigneeSelect() {
-    // À IMPLÉMENTER
+    const storyAssignee = document.getElementById('storyAssignee');
+    let html = '<option value="">Non assigné</option>';
+    collaborators.forEach(collaborator => {
+        html += `<option value="${collaborator}">${collaborator}</option>`;
+    });
+    storyAssignee.innerHTML = html;
 }
 
 /**
